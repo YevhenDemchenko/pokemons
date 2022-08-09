@@ -1,0 +1,25 @@
+<ng-container *ngIf="PokemonsListModel$ | async; let Model">
+  <div class="flex">
+    <h2>Pokemons</h2>
+    <div class="flex" style="justify-content: flex-end">
+      <mat-paginator
+        *ngIf="Model.TotalCount !== 0 && !Model.IsGlobalSpinnerActive"
+        style="width: 28em"
+        [pageSize]="10"
+        [length]="Model.TotalCount"
+        [pageIndex]="Model.CurrentPage"
+        (page)="PageEvent = $event; loadPokemons(PageEvent.pageIndex)"
+      >
+      </mat-paginator>
+      <button mat-icon-button (click)="refreshPokemons()">
+        <mat-icon> refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+  <app-card-grid
+    *ngIf="!Model.IsGlobalSpinnerActive"
+    [PokemonsList]="Model.PokemonsList"
+    (cardClicked)="cardClick($event)"
+    (favoriteClicked)="favoriteClick($event)"
+  ></app-card-grid>
+</ng-container>

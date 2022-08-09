@@ -1,0 +1,11 @@
+<ng-container *ngIf="FavoritesListModel$ | async; let Model">
+  <div class="flex">
+    <h2>Favorites</h2>
+  </div>
+  <app-card-grid
+    *ngIf="!Model.IsGlobalSpinnerActive"
+    [PokemonsList]="Model.FavoritesList"
+    (cardClicked)="cardClick($event)"
+    (favoriteClicked)="favoriteClick($event)"
+  ></app-card-grid>
+</ng-container>

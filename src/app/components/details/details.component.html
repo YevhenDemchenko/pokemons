@@ -1,0 +1,33 @@
+<ng-container *ngIf="PokemonDetailsModel$ | async; let Model">
+  <div class="flex">
+    <h2>Details</h2>
+  </div>
+  <mat-card class="card">
+    <mat-card-header class="flex">
+      <mat-card-title>{{ Model.PokemonName }}</mat-card-title>
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="favoriteClick(Model.PokemonName)"
+      >
+        <mat-icon>{{
+          Model.IsFavourite ? "favorite" : "favorite_border"
+        }}</mat-icon>
+      </button>
+    </mat-card-header>
+    <img mat-card-image [src]="Model.ImgUrl" class="picture" alt="Pokemon" />
+    <mat-card-content>
+      <div class="divFollowers">
+        <mat-list-item
+          class="listItem"
+          *ngFor="let stat of Model.Stats; let i = index"
+        >
+          <h2 mat-subheader>{{ stat.stat.name }}</h2>
+          <h3>Base: {{ stat.base_stat }}</h3>
+          <h3>Effort: {{ stat.effort }}</h3>
+          <mat-divider *ngIf="i !== Model.Stats.length - 1"></mat-divider>
+        </mat-list-item>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

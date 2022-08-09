@@ -1,0 +1,17 @@
+:host {
+    width: 100%;
+}
+.picture {
+    width: 200px;
+    height: 200px;
+}
+
+.card {
+    margin: 1em;
+}
+.listItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0.5em;
+}

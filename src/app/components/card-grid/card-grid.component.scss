@@ -1,0 +1,39 @@
+.cardDiv {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.card {
+  max-width: 235px;
+  margin: 0.5em;
+  min-width: 17em;
+  min-height: 7em;
+}
+.card:hover {
+  cursor: pointer;
+}
+.avatarInCard {
+  background-size: cover;
+  transition: 1s;
+  height: 75px;
+  width: 75px;
+}
+.avatarInCard:hover {
+  transform: scale(1.4);
+}
+
+.cardActions {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.cardHeader {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@media screen and (max-width: 600px) {
+  .card:last-child {
+    margin-bottom: 1.5em;
+  }
+}

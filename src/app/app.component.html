@@ -1,0 +1,19 @@
+<div class="toolbar" role="banner">
+  <button mat-button (click)="goToPokemonsList()">Pokemons</button>
+  <button mat-button (click)="goToFavoritesList()">Favorites</button>
+</div>
+<ng-container *ngIf="AppModel$ | async; let Model">
+  <div
+    class="content"
+    [ngClass]="{ inactive: Model.IsGlobalSpinnerActive }"
+    role="main"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <mat-spinner
+    class="spinner"
+    *ngIf="Model.IsGlobalSpinnerActive"
+  ></mat-spinner>
+</ng-container>
+
+<mat-spinner class="spinner" *ngIf="AppModel$ == null"></mat-spinner>
